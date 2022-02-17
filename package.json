@@ -12,7 +12,9 @@
     "dev": "node build/dev-server.js",
     "gh": "npm run example && node build/deploy",
     "lint": "eslint --ext .js,.vue src",
-    "release": "npm run lint && webpack --progress --hide-modules --config  ./build/webpack.release.js && webpack --progress --hide-modules --config  ./build/webpack.release.min.js"
+    "release": "npm run lint && webpack --hide-modules --config  ./build/webpack.release.js && webpack --progress --hide-modules --config ./build/webpack.release.min.js",
+    "release2": "npm run lint && webpack --hide-modules --config ./build/webpack.release.min.js && cp ./dist/vue-color.min.js ../../../frontend/node_modules/vue-color/",
+    "copy": "cp ./dist/* ../../frontend/node_modules/vue-color/dist/"
   },
   "repository": {
     "type": "git",
