@@ -63,7 +63,7 @@ export default {
       default () {
         return presetColors
       }
-    },
+    }
   },
   computed: {
     cmyk () {
