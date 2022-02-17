@@ -58,7 +58,12 @@
           <h2>Twitter</h2>
         </div>
       </div>
-
+      <div class="demo-list">
+        <div class="demo-item">
+          <cmyk-picker :value="colors" @input="updateValue"></cmyk-picker>
+          <h2>CMYK</h2>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -70,6 +75,7 @@ import grayscale from '../src/components/Grayscale.vue'
 import swatches from '../src/components/Swatches.vue'
 import slider from '../src/components/Slider.vue'
 import sketch from '../src/components/Sketch.vue'
+import cmyk from '../src/components/CMYK.vue'
 import chrome from '../src/components/Chrome.vue'
 import photoshop from '../src/components/Photoshop.vue'
 import twitter from '../src/components/Twitter.vue'
@@ -105,6 +111,7 @@ export default {
     'swatches-picker': swatches,
     'slider-picker': slider,
     'sketch-picker': sketch,
+    'cmyk-picker': cmyk,
     'chrome-picker': chrome,
     'photoshop-picker': photoshop,
     'twitter-picker': twitter

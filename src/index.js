@@ -5,6 +5,7 @@ import Slider from './components/Slider.vue'
 import Swatches from './components/Swatches.vue'
 import Photoshop from './components/Photoshop.vue'
 import Sketch from './components/Sketch.vue'
+import CMYK from './components/CMYK.vue'
 import Chrome from './components/Chrome.vue'
 import Twitter from './components/Twitter.vue'
 import Alpha from './components/common/Alpha.vue'
@@ -24,6 +25,7 @@ const VueColor = {
   Swatches,
   Photoshop,
   Sketch,
+  CMYK,
   Chrome,
   Alpha,
   Checkboard,
