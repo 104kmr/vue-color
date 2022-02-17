@@ -1,31 +1,31 @@
 <template>
   <div role="application" aria-label="Sketch color picker" :class="['vc-sketch', disableAlpha ? 'vc-sketch__disable-alpha' : '']">
-    <div class="vc-sketch-saturation-wrap">
+    <div class="vc-cmyk-saturation-wrap">
       <saturation v-model="colors" @change="childChange"></saturation>
     </div>
-    <div class="vc-sketch-controls">
-      <div class="vc-sketch-sliders">
-        <div class="vc-sketch-hue-wrap">
+    <div class="vc-cmyk-controls">
+      <div class="vc-cmyk-sliders">
+        <div class="vc-cmyk-hue-wrap">
           <hue v-model="colors" @change="childChange"></hue>
         </div>
       </div>
-      <div class="vc-sketch-color-wrap">
-        <div :aria-label="`Current color is ${activeColor}`" class="vc-sketch-active-color" :style="{background: activeColor}"></div>
+      <div class="vc-cmyk-color-wrap">
+        <div :aria-label="`Current color is ${activeColor}`" class="vc-cmyk-active-color" :style="{background: activeColor}"></div>
         <checkboard></checkboard>
       </div>
     </div>
-    <div class="vc-sketch-field" v-if="!disableFields">
+    <div class="vc-cmyk-field" v-if="!disableFields">
       <!-- cmyk -->
-      <div class="vc-sketch-field--single">
+      <div class="vc-cmyk-field--single">
         <ed-in label="c" :value="cmyk.c" @change="inputChange"></ed-in>
       </div>
-      <div class="vc-sketch-field--single">
+      <div class="vc-cmyk-field--single">
         <ed-in label="m" :value="cmyk.m" @change="inputChange"></ed-in>
       </div>
-      <div class="vc-sketch-field--single">
+      <div class="vc-cmyk-field--single">
         <ed-in label="y" :value="cmyk.y" @change="inputChange"></ed-in>
       </div>
-      <div class="vc-sketch-field--single">
+      <div class="vc-cmyk-field--single">
         <ed-in label="k" :value="cmyk.k" @change="inputChange"></ed-in>
       </div>
     </div>
@@ -136,7 +136,7 @@ export default {
 </script>
 
 <style>
-.vc-sketch {
+.vc-cmyk {
   position: relative;
   width: 200px;
   padding: 10px 10px 0;
@@ -146,40 +146,40 @@ export default {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, .15), 0 8px 16px rgba(0, 0, 0, .15);
 }
 
-.vc-sketch-saturation-wrap {
+.vc-cmyk-saturation-wrap {
   width: 100%;
   padding-bottom: 75%;
   position: relative;
   overflow: hidden;
 }
 
-.vc-sketch-controls {
+.vc-cmyk-controls {
   display: flex;
 }
 
-.vc-sketch-sliders {
+.vc-cmyk-sliders {
   padding: 4px 0;
   flex: 1;
 }
 
-.vc-sketch-sliders .vc-hue,
-.vc-sketch-sliders .vc-alpha-gradient {
+.vc-cmyk-sliders .vc-hue,
+.vc-cmyk-sliders .vc-alpha-gradient {
   border-radius: 2px;
 }
 
-.vc-sketch-hue-wrap {
+.vc-cmyk-hue-wrap {
   position: relative;
   height: 10px;
 }
 
-.vc-sketch-alpha-wrap {
+.vc-cmyk-alpha-wrap {
   position: relative;
   height: 10px;
   margin-top: 4px;
   overflow: hidden;
 }
 
-.vc-sketch-color-wrap {
+.vc-cmyk-color-wrap {
   width: 24px;
   height: 24px;
   position: relative;
@@ -188,7 +188,7 @@ export default {
   border-radius: 3px;
 }
 
-.vc-sketch-active-color {
+.vc-cmyk-active-color {
   position: absolute;
   top: 0;
   left: 0;
@@ -199,16 +199,16 @@ export default {
   z-index: 2;
 }
 
-.vc-sketch-color-wrap .vc-checkerboard {
+.vc-cmyk-color-wrap .vc-checkerboard {
   background-size: auto;
 }
 
-.vc-sketch-field {
+.vc-cmyk-field {
   display: flex;
   padding-top: 4px;
 }
 
-.vc-sketch-field .vc-input__input {
+.vc-cmyk-field .vc-input__input {
   width: 90%;
   padding: 4px 0 3px 10%;
   border: none;
@@ -216,7 +216,7 @@ export default {
   font-size: 10px;
 }
 
-.vc-sketch-field .vc-input__label {
+.vc-cmyk-field .vc-input__label {
   display: block;
   text-align: center;
   font-size: 11px;
@@ -226,42 +226,19 @@ export default {
   text-transform: capitalize;
 }
 
-.vc-sketch-field--single {
+.vc-cmyk-field--single {
   flex: 1;
   padding-left: 6px;
 }
+.vc-cmyk-field--single:first-child {
+  padding-left: 0;
+}
 
-.vc-sketch-field--double {
+.vc-cmyk-field--double {
   flex: 2;
 }
 
-.vc-sketch-presets {
-  margin-right: -10px;
-  margin-left: -10px;
-  padding-left: 10px;
-  padding-top: 10px;
-  border-top: 1px solid #eee;
-}
-
-.vc-sketch-presets-color {
-  border-radius: 3px;
-  overflow: hidden;
-  position: relative;
-  display: inline-block;
-  margin: 0 10px 10px 0;
-  vertical-align: top;
-  cursor: pointer;
-  width: 16px;
-  height: 16px;
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .15);
-}
-
-.vc-sketch-presets-color .vc-checkerboard {
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .15);
-  border-radius: 3px;
-}
-
-.vc-sketch__disable-alpha .vc-sketch-color-wrap {
+.vc-cmyk__disable-alpha .vc-cmyk-color-wrap {
   height: 10px;
 }
 </style>
