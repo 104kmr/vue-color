@@ -1,5 +1,5 @@
 <template>
-  <div role="application" aria-label="Sketch color picker" :class="['vc-sketch', disableAlpha ? 'vc-sketch__disable-alpha' : '']">
+  <div role="application" aria-label="Sketch color picker" :class="['vc-cmyk']">
     <div class="vc-cmyk-saturation-wrap">
       <saturation v-model="colors" @change="childChange"></saturation>
     </div>
@@ -14,7 +14,7 @@
         <checkboard></checkboard>
       </div>
     </div>
-    <div class="vc-cmyk-field" v-if="!disableFields">
+    <div class="vc-cmyk-field">
       <!-- cmyk -->
       <div class="vc-cmyk-field--single">
         <ed-in label="c" :value="cmyk.c" @change="inputChange"></ed-in>
@@ -28,6 +28,10 @@
       <div class="vc-cmyk-field--single">
         <ed-in label="k" :value="cmyk.k" @change="inputChange"></ed-in>
       </div>
+    </div>
+    <div class="vc-cmyk-actions">
+      <div class="vc-cmyk-ac-btn" role="button" aria-label="OK" @click.prevent="handleAccept">OK</div>
+      <div class="vc-cmyk-ac-btn" role="button" aria-label="Cancel" @click.prevent="handleCancel">Cancel</div>
     </div>
   </div>
 </template>
@@ -130,6 +134,12 @@ export default {
         c[k] = v
       }
       this.CMYK(c)
+    },
+    handleAccept () {
+      this.$emit('ok')
+    },
+    handleCancel () {
+      this.$emit('cancel')
     }
   }
 }
@@ -240,5 +250,30 @@ export default {
 
 .vc-cmyk__disable-alpha .vc-cmyk-color-wrap {
   height: 10px;
+}
+
+.vc-cmyk-actions {
+  margin-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.vc-cmyk-ac-btn {
+  cursor: pointer;
+  background-image: linear-gradient(-180deg, #FFFFFF 0%, #E6E6E6 100%);
+  border: 1px solid #878787;
+  border-radius: 2px;
+  height: 20px;
+  box-shadow: 0 1px 0 0 #EAEAEA;
+  font-size: 14px;
+  color: #000;
+  line-height: 20px;
+  text-align: center;
+  display: inline-block;
+  padding: 0 10px;
+}
+
+.vc-cmyk-ac-btn + .vc-cmyk-ac-btn {
+  margin-left: 5px;
 }
 </style>

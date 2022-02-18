@@ -7600,7 +7600,7 @@ var render = function() {
   return _c(
     "div",
     {
-      class: ["vc-sketch", _vm.disableAlpha ? "vc-sketch__disable-alpha" : ""],
+      class: ["vc-sketch"],
       attrs: { role: "application", "aria-label": "Sketch color picker" }
     },
     [
@@ -7659,57 +7659,55 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      !_vm.disableFields
-        ? _c("div", { staticClass: "vc-cmyk-field" }, [
-            _c(
-              "div",
-              { staticClass: "vc-cmyk-field--single" },
-              [
-                _c("ed-in", {
-                  attrs: { label: "c", value: _vm.cmyk.c },
-                  on: { change: _vm.inputChange }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "vc-cmyk-field--single" },
-              [
-                _c("ed-in", {
-                  attrs: { label: "m", value: _vm.cmyk.m },
-                  on: { change: _vm.inputChange }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "vc-cmyk-field--single" },
-              [
-                _c("ed-in", {
-                  attrs: { label: "y", value: _vm.cmyk.y },
-                  on: { change: _vm.inputChange }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "vc-cmyk-field--single" },
-              [
-                _c("ed-in", {
-                  attrs: { label: "k", value: _vm.cmyk.k },
-                  on: { change: _vm.inputChange }
-                })
-              ],
-              1
-            )
-          ])
-        : _vm._e()
+      _c("div", { staticClass: "vc-cmyk-field" }, [
+        _c(
+          "div",
+          { staticClass: "vc-cmyk-field--single" },
+          [
+            _c("ed-in", {
+              attrs: { label: "c", value: _vm.cmyk.c },
+              on: { change: _vm.inputChange }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "vc-cmyk-field--single" },
+          [
+            _c("ed-in", {
+              attrs: { label: "m", value: _vm.cmyk.m },
+              on: { change: _vm.inputChange }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "vc-cmyk-field--single" },
+          [
+            _c("ed-in", {
+              attrs: { label: "y", value: _vm.cmyk.y },
+              on: { change: _vm.inputChange }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "vc-cmyk-field--single" },
+          [
+            _c("ed-in", {
+              attrs: { label: "k", value: _vm.cmyk.k },
+              on: { change: _vm.inputChange }
+            })
+          ],
+          1
+        )
+      ])
     ]
   )
 }
