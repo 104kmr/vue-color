@@ -2569,9 +2569,9 @@ exports.default = {
       var b = t.b / 255;
 
       var k = Math.min(1 - r, 1 - g, 1 - b);
-      var c = (1 - r - k) / (1 - k);
-      var m = (1 - g - k) / (1 - k);
-      var y = (1 - b - k) / (1 - k);
+      var c = (1 - r - k) / (1 - k) || 0;
+      var m = (1 - g - k) / (1 - k) || 0;
+      var y = (1 - b - k) / (1 - k) || 0;
 
       c = Math.round(c * 100);
       m = Math.round(m * 100);
@@ -2624,6 +2624,12 @@ exports.default = {
         c[k] = v;
       }
       this.CMYK(c);
+    },
+    handleAccept: function handleAccept() {
+      this.$emit('ok');
+    },
+    handleCancel: function handleCancel() {
+      this.$emit('cancel');
     }
   }
 };
@@ -7583,7 +7589,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.vc-cmyk {\n  position: relative;\n  width: 200px;\n  padding: 10px 10px 0;\n  box-sizing: initial;\n  background: #fff;\n  border-radius: 4px;\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, .15), 0 8px 16px rgba(0, 0, 0, .15);\n}\n.vc-cmyk-saturation-wrap {\n  width: 100%;\n  padding-bottom: 75%;\n  position: relative;\n  overflow: hidden;\n}\n.vc-cmyk-controls {\n  display: flex;\n}\n.vc-cmyk-sliders {\n  padding: 4px 0;\n  flex: 1;\n}\n.vc-cmyk-sliders .vc-hue,\n.vc-cmyk-sliders .vc-alpha-gradient {\n  border-radius: 2px;\n}\n.vc-cmyk-hue-wrap {\n  position: relative;\n  height: 10px;\n}\n.vc-cmyk-alpha-wrap {\n  position: relative;\n  height: 10px;\n  margin-top: 4px;\n  overflow: hidden;\n}\n.vc-cmyk-color-wrap {\n  width: 24px;\n  height: 24px;\n  position: relative;\n  margin-top: 4px;\n  margin-left: 4px;\n  border-radius: 3px;\n}\n.vc-cmyk-active-color {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  border-radius: 2px;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .15), inset 0 0 4px rgba(0, 0, 0, .25);\n  z-index: 2;\n}\n.vc-cmyk-color-wrap .vc-checkerboard {\n  background-size: auto;\n}\n.vc-cmyk-field {\n  display: flex;\n  padding-top: 4px;\n}\n.vc-cmyk-field .vc-input__input {\n  width: 90%;\n  padding: 4px 0 3px 10%;\n  border: none;\n  box-shadow: inset 0 0 0 1px #ccc;\n  font-size: 10px;\n}\n.vc-cmyk-field .vc-input__label {\n  display: block;\n  text-align: center;\n  font-size: 11px;\n  color: #222;\n  padding-top: 3px;\n  padding-bottom: 4px;\n  text-transform: capitalize;\n}\n.vc-cmyk-field--single {\n  flex: 1;\n  padding-left: 6px;\n}\n.vc-cmyk-field--single:first-child {\n  padding-left: 0;\n}\n.vc-cmyk-field--double {\n  flex: 2;\n}\n.vc-cmyk__disable-alpha .vc-cmyk-color-wrap {\n  height: 10px;\n}\n", ""]);
+exports.push([module.i, "\n.vc-cmyk {\n  position: relative;\n  width: 200px;\n  padding: 10px 10px 0;\n  box-sizing: initial;\n  background: #fff;\n  border-radius: 4px;\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, .15), 0 8px 16px rgba(0, 0, 0, .15);\n}\n.vc-cmyk-saturation-wrap {\n  width: 100%;\n  padding-bottom: 75%;\n  position: relative;\n  overflow: hidden;\n}\n.vc-cmyk-controls {\n  display: flex;\n}\n.vc-cmyk-sliders {\n  padding: 4px 0;\n  flex: 1;\n}\n.vc-cmyk-sliders .vc-hue,\n.vc-cmyk-sliders .vc-alpha-gradient {\n  border-radius: 2px;\n}\n.vc-cmyk-hue-wrap {\n  position: relative;\n  height: 10px;\n}\n.vc-cmyk-alpha-wrap {\n  position: relative;\n  height: 10px;\n  margin-top: 4px;\n  overflow: hidden;\n}\n.vc-cmyk-color-wrap {\n  width: 24px;\n  height: 24px;\n  position: relative;\n  margin-top: 4px;\n  margin-left: 4px;\n  border-radius: 3px;\n}\n.vc-cmyk-active-color {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  border-radius: 2px;\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .15), inset 0 0 4px rgba(0, 0, 0, .25);\n  z-index: 2;\n}\n.vc-cmyk-color-wrap .vc-checkerboard {\n  background-size: auto;\n}\n.vc-cmyk-field {\n  display: flex;\n  padding-top: 4px;\n}\n.vc-cmyk-field .vc-input__input {\n  width: 90%;\n  padding: 4px 0 3px 10%;\n  border: none;\n  box-shadow: inset 0 0 0 1px #ccc;\n  font-size: 10px;\n}\n.vc-cmyk-field .vc-input__label {\n  display: block;\n  text-align: center;\n  font-size: 11px;\n  color: #222;\n  padding-top: 3px;\n  padding-bottom: 4px;\n  text-transform: capitalize;\n}\n.vc-cmyk-field--single {\n  flex: 1;\n  padding-left: 6px;\n}\n.vc-cmyk-field--single:first-child {\n  padding-left: 0;\n}\n.vc-cmyk-field--double {\n  flex: 2;\n}\n.vc-cmyk__disable-alpha .vc-cmyk-color-wrap {\n  height: 10px;\n}\n.vc-cmyk-actions {\n  margin-top: 10px;\n  padding-bottom: 10px;\n  text-align: center;\n}\n.vc-cmyk-ac-btn {\n  cursor: pointer;\n  background-image: linear-gradient(-180deg, #FFFFFF 0%, #E6E6E6 100%);\n  border: 1px solid #878787;\n  border-radius: 2px;\n  height: 20px;\n  box-shadow: 0 1px 0 0 #EAEAEA;\n  font-size: 14px;\n  color: #000;\n  line-height: 20px;\n  text-align: center;\n  display: inline-block;\n  padding: 0 10px;\n}\n.vc-cmyk-ac-btn + .vc-cmyk-ac-btn {\n  margin-left: 5px;\n}\n", ""]);
 
 // exports
 
@@ -7600,7 +7606,7 @@ var render = function() {
   return _c(
     "div",
     {
-      class: ["vc-sketch"],
+      class: ["vc-cmyk"],
       attrs: { role: "application", "aria-label": "Sketch color picker" }
     },
     [
@@ -7706,6 +7712,38 @@ var render = function() {
             })
           ],
           1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "vc-cmyk-actions" }, [
+        _c(
+          "div",
+          {
+            staticClass: "vc-cmyk-ac-btn",
+            attrs: { role: "button", "aria-label": "OK" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.handleAccept($event)
+              }
+            }
+          },
+          [_vm._v("OK")]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "vc-cmyk-ac-btn",
+            attrs: { role: "button", "aria-label": "Cancel" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.handleCancel($event)
+              }
+            }
+          },
+          [_vm._v("Cancel")]
         )
       ])
     ]

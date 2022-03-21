@@ -78,9 +78,9 @@ export default {
       var b = t.b / 255
 
       var k = Math.min(1 - r, 1 - g, 1 - b)
-      var c = (1 - r - k) / (1 - k)
-      var m = (1 - g - k) / (1 - k)
-      var y = (1 - b - k) / (1 - k)
+      var c = (1 - r - k) / (1 - k) || 0
+      var m = (1 - g - k) / (1 - k) || 0
+      var y = (1 - b - k) / (1 - k) || 0
 
       c = Math.round(c * 100)
       m = Math.round(m * 100)
